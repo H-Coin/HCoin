@@ -37,6 +37,12 @@
 
             if (document.getElementById("query").value === "999") {
                 document.getElementById("header").innerHTML = `Wallet id ${document.getElementById("query").value} has 2 H-Coin`
+            } elseif (document.getElementById("query").value === "997") {
+                document.getElementById("header").innerHTML = `Wallet id ${document.getElementById("query").value} has 0 H-Coin`
+            } elseif (document.getElementById("query").value === "213") {
+                document.getElementById("header").innerHTML = `Wallet id ${document.getElementById("query").value} has 0 H-Coin`
+            } elseif (document.getElementById("query").value === "372") {
+                document.getElementById("header").innerHTML = `Wallet id ${document.getElementById("query").value} has 0 H-Coin`
             } else {
                 document.getElementById("header").innerHTML = `Invalid wallet ID`
             }
